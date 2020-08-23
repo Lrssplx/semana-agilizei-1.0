@@ -3,19 +3,18 @@
 let Chance = require('chance')
 let chance = new Chance()
 
-Given("acesso o site", () => {
+Given(/^open the site$/, () => {
+  cy.server()
+  cy.route('POST', '**//api/1/databases/userdetails/collections/newtable?**').as('postNewTable')
+  cy.route('POST', '**//api/1/databases/userdetails/collections/usertable?**').as('postUserTable')
+  cy.route('GET', '**//api/1/databases/userdetails/collections/newtable?**').as('getNewTable')
+
 
   cy.visit('Register.html')
-  //cy.server()
-  //cy.route('POST', '**//api/1/databases/userdetails/collections/newtable?**').as('postNewTable')
-  //cy.route('POST', '**//api/1/databases/userdetails/collections/usertable?**').as('postUserTable')
-  //cy.route('GET', '**//api/1/databases/userdetails/collections/newtable?**').as('getNewTable')
-
-
 });
 
 
-When("informo os dados", () => {
+When(/^fill the fields$/, () => {
   cy.get('input[placeholder="First Name"]').type(chance.first())
   cy.get('input[ng-model^=Last]').type(chance.last())
   cy.get('input[ng-model^=Email]').type(chance.email())
@@ -43,12 +42,12 @@ When("informo os dados", () => {
 });
 
 
-And("salvar", () => {
+When(/^click in save$/, () => {
   cy.get('button#submitbtn').click()
 });
 
 
-Then("devo ser cadastrado com sucesso", () => {
+Then(/^the user is register with successful$/, () => {
   cy.wait('@postNewTable').then(res => {
     expect(res.status).to.eq(200)
   })
