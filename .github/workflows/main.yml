@@ -29,7 +29,7 @@ jobs:
       with:
         node-version: ${{matrix.node-version}}
     - run: npm install
-    - run: npx cypress run:cucumber
+    - run: npx cypress run :cucumber
     - run: npm run report:cucumber
     - name: Deploy to GitHub Pages
   # You may pin to the exact commit or the version.
