@@ -23,7 +23,7 @@
             "name": "open the site",
             "result": {
               "status": "passed",
-              "duration": 11248000000
+              "duration": 12027000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "fill the fields",
             "result": {
               "status": "passed",
-              "duration": 4338000000
+              "duration": 4793000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "click in save",
             "result": {
               "status": "passed",
-              "duration": 218000000
+              "duration": 275000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "the user is register with successful",
             "result": {
               "status": "passed",
-              "duration": 7277000000
+              "duration": 9636000000
             }
           }
         ]
